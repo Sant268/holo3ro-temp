@@ -107,13 +107,15 @@ transition: opacity 0.3s ease;
           var heroCardsExist = $('#cards-container').find('.FMHERO').length > 0;
           if(optvar=="FMHERO" || heroCardsExist) {cardsContainer.empty();console.log("DEBUG: clear called!")}
           data.forEach(function(item) {
+            console.log(item);
+            if(item.Where==null){ item.Where="";}
             if(item[optvar] == null)return;
             var cardHtml = `
               <div class="card ${optvar} mx-2">
                 <div class="card-body ${optvar}">
                   <p class="card-text">${item[optvar]}</p>
                 </div>
-                <div class="card-footer text-muted text-center">${item.Name}</div>
+                <div class="card-footer text-muted text-center">- ${item.Name} - ${item.Where}</div>
               </div>
             `;
             cardsContainer.append(cardHtml);
