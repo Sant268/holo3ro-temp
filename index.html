@@ -1,46 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Under Construction</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>holoh3roes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; 
+  /* Adjust the height of sections to fill the entire viewport */
+  section {
+    /* height: 100vh; */
+    position: relative;
   }
-  body {
-    background-image: url("./bg_fanbook.png"); 
-    /*background-repeat: repeat; */
-    background-size: 100%; 
-  }
-
-  .construction-text {
-    font-size: 2.5em;
-    text-align: center;
-    animation: blink 1.5s infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
+  .maxheight
+  {
+    height: 100vh;
   }
 </style>
 </head>
 <body>
-<!-- So sorry for the whole team, tech issues :( I'll get this done ASAP! Promise~-->
-  <div class="construction-text">
-    Under Construction: Heroes are at work! 📜🔨☔
+  <style>
+    section.maxheight {
+  background-image: url('./bg_website.jpg') !important;
+  background-size: cover; 
+  background-position: center;
+  background-repeat: repeat; 
+  color: black;
+}
+.grad {
+  background: linear-gradient(to bottom, #ffcccc, #add8e6, #808080);
+}
+
+  </style>
+<!-- Hero Section -->
+<section class="maxheight d-flex align-items-center justify-content-center">
+  <div class="container text-center">
+    <h1 class="display-4" >Anniversary time!</h1>
+    <p class="lead">🔨☔📜</p>
   </div>
+</section>
+<!-- Scrollable Sections -->
+<style>
+  .zeta-bg {
+    background-image: url('./bg_-_zeta.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .kl-bg {
+    background-image: url('./bg_-_kaela.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .kb-bg {
+    background-image: url('./bg_-_kobo.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card {
+    margin-top: 20px;
+    width: 300px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+  .custom-button {
+    position: relative;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  .custom-button.active {
+background:  rgba(0, 0, 0, 0.3) ;
+color: #fff;
+transition: opacity 0.3s ease;
+}
+
+</style>
+<section class="bg-light grad" data-aos="fade-up">
+  <div class="container">
+    <!-- <h2>Messages</h2> -->
+    <div class="d-flex flex-wrap">
+      <div class="d-flex justify-content-center mt-4 mx-auto  text-center">
+        <button type="button" id="wife" class="btn zeta-bg custom-button mx-2">Zeta</button>
+        <button type="button" id="FMKAELA" class="btn kl-bg custom-button mx-2">Kaela</button>
+        <button type="button" id="FMKOBO" class="btn kb-bg custom-button mx-2">Kobo</button>
+      </div>
+      <script>
+      function createCards(data,optvar="FMHERO") {
+        if(optvar=="wife") {
+          optvar="FMZETA"
+        } 
+          var cardsContainer = $('#cards-container');
+          var heroCardsExist = $('#cards-container').find('.FMHERO').length > 0;
+          if(optvar=="FMHERO" || heroCardsExist) {cardsContainer.empty();console.log("DEBUG: clear called!")}
+          data.forEach(function(item) {
+            if(item[optvar] == null)return;
+            var cardHtml = `
+              <div class="card ${optvar} mx-2">
+                <div class="card-body ${optvar}">
+                  <p class="card-text">${item[optvar]}</p>
+                </div>
+                <div class="card-footer text-muted text-center">${item.Name}</div>
+              </div>
+            `;
+            cardsContainer.append(cardHtml); // Append card to container
+          });
+        }
+                $.getJSON('resp.json', function(data) {
+            // Call the function with the loaded JSON data
+                createCards(data);
+                  });
+        function calltheCaller(buttonId){
+          $.getJSON('resp.json', function(data) {
+    // Call the function with the loaded JSON data
+         createCards(data,buttonId);
+          });
+        }
+        function removeThisClassCards(buttonId) {
+          if(buttonId=="wife") buttonId="FMZETA";
+        $('.card.' + buttonId).remove();
+        var cardsExist = $('#cards-container').find('.card').length > 0;
+        if(!cardsExist) {
+          $.getJSON('resp.json', function(data) {
+            // Call the function with the loaded JSON data
+                createCards(data);
+                  });
+        }
+        }
+          $(document).ready(function() {
+    $('.custom-button').click(function(){
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            var buttonId = $(this).attr('id');
+            removeThisClassCards(buttonId)
+        } else {
+            $(this).addClass('active');
+            var buttonId = $(this).attr('id');
+            calltheCaller(buttonId);
+        }
+    });
+  });
+
+
+
+
+        </script>
+     
+          <div id="cards-container" class="row"></div>
+     <style> 
+      .FMHERO {
+        background-color: #efd3bb;
+      }
+      .FMZETA {
+        background-color: rgb(198, 209, 220);
+      }
+      .FMKAELA {
+        background-color: rgb(236, 154, 153);
+      }
+      .FMKOBO {
+        background-color: rgb(176, 193, 240);
+      }
+    </style>
+      <!-- Add more cards as needed -->
+    </div>
+  </div>
+
+</section>
+<section id="section2" class="bg-dark text-light" data-aos="fade-up">
+  <div class="container">
+    <h2>Section 2</h2>
+    <p>Nullam accumsan velit sed lorem imperdiet, sit amet cursus tortor mollis. Vivamus a nunc in enim consequat ultrices.</p>
+  </div>
+</section>
+<section class="bg-success text-light" data-aos="fade-up">
+  <div class="container">
+    <h2>Section 3</h2>
+    <p>Phasellus hendrerit mauris non magna ultricies, sed laoreet ligula dignissim. Aliquam sit amet fermentum mauris.</p>
+  </div>
+</section>
+<!-- Bootstrap 5 Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<!-- AOS Library -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 1200
+  });
+  onElementHeightChange(document.body, function(){
+    AOS.refresh();
+  });
+  onElementHeightChange(document.section, function(){
+    AOS.refresh();
+  });
+</script>
 </body>
 </html>
