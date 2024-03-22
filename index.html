@@ -9,9 +9,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <style>
-  /* Adjust the height of sections to fill the entire viewport */
   section {
-    /* height: 100vh; */
+
     position: relative;
   }
   .maxheight
@@ -34,14 +33,15 @@
 }
 
   </style>
-<!-- Hero Section -->
+
 <section class="maxheight d-flex align-items-center justify-content-center">
   <div class="container text-center">
     <h1 class="display-4" >Anniversary time!</h1>
     <p class="lead">🔨☔📜</p>
+    <!-- So sorry for the whole team, tech issues :( I'll get this done ASAP! Promise~ -->
   </div>
 </section>
-<!-- Scrollable Sections -->
+
 <style>
   .zeta-bg {
     background-image: url('./bg_-_zeta.png');
@@ -116,16 +116,16 @@ transition: opacity 0.3s ease;
                 <div class="card-footer text-muted text-center">${item.Name}</div>
               </div>
             `;
-            cardsContainer.append(cardHtml); // Append card to container
+            cardsContainer.append(cardHtml);
           });
         }
                 $.getJSON('resp.json', function(data) {
-            // Call the function with the loaded JSON data
+
                 createCards(data);
                   });
         function calltheCaller(buttonId){
           $.getJSON('resp.json', function(data) {
-    // Call the function with the loaded JSON data
+
          createCards(data,buttonId);
           });
         }
@@ -135,7 +135,7 @@ transition: opacity 0.3s ease;
         var cardsExist = $('#cards-container').find('.card').length > 0;
         if(!cardsExist) {
           $.getJSON('resp.json', function(data) {
-            // Call the function with the loaded JSON data
+
                 createCards(data);
                   });
         }
@@ -179,7 +179,7 @@ transition: opacity 0.3s ease;
   </div>
 
 </section>
-<section id="section2" class="bg-dark text-light" data-aos="fade-up">
+<!-- <section id="section2" class="bg-dark text-light" data-aos="fade-up">
   <div class="container">
     <h2>Section 2</h2>
     <p>Nullam accumsan velit sed lorem imperdiet, sit amet cursus tortor mollis. Vivamus a nunc in enim consequat ultrices.</p>
@@ -190,7 +190,7 @@ transition: opacity 0.3s ease;
     <h2>Section 3</h2>
     <p>Phasellus hendrerit mauris non magna ultricies, sed laoreet ligula dignissim. Aliquam sit amet fermentum mauris.</p>
   </div>
-</section>
+</section> -->
 <!-- Bootstrap 5 Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
