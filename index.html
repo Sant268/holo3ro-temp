@@ -174,6 +174,9 @@ transition: opacity 0.3s ease;
       .FMKOBO {
         background-color: rgb(176, 193, 240);
       }
+      #section2 {
+        height: 100vh;
+      }
     </style>
 
     </div>
@@ -226,6 +229,7 @@ $(document).ready(function() {
       `;
       imgCardContainer.append(imgCardHtml);
     });
+    AOS.refresh();
   }
 
 
@@ -240,7 +244,7 @@ $(document).ready(function() {
 <section class="bg-success text-light workimage" data-aos="fade-up">
   <style>
       
-      
+
       .workimage {
         background-image: url('./bg_website.jpg') !important;
   background-size: cover; 
