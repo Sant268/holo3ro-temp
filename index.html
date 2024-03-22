@@ -91,7 +91,7 @@ transition: opacity 0.3s ease;
 </style>
 <section class="bg-light grad" data-aos="fade-up">
   <div class="container">
-    <!-- <h2>Messages</h2> -->
+
     <div class="d-flex flex-wrap">
       <div class="d-flex justify-content-center mt-4 mx-auto  text-center">
         <button type="button" id="wife" class="btn zeta-bg custom-button mx-2">Zeta</button>
@@ -107,7 +107,6 @@ transition: opacity 0.3s ease;
           var heroCardsExist = $('#cards-container').find('.FMHERO').length > 0;
           if(optvar=="FMHERO" || heroCardsExist) {cardsContainer.empty();console.log("DEBUG: clear called!")}
           data.forEach(function(item) {
-            console.log(item);
             if(item.Where==null){ item.Where="";}
             if(item[optvar] == null)return;
             var cardHtml = `
@@ -176,18 +175,69 @@ transition: opacity 0.3s ease;
         background-color: rgb(176, 193, 240);
       }
     </style>
-      <!-- Add more cards as needed -->
+
     </div>
   </div>
 
 </section>
-<!-- <section id="section2" class="bg-dark text-light" data-aos="fade-up">
-  <div class="container">
-    <h2>Section 2</h2>
-    <p>Nullam accumsan velit sed lorem imperdiet, sit amet cursus tortor mollis. Vivamus a nunc in enim consequat ultrices.</p>
+<section id="section2" class="bg-dark text-light" data-aos="fade-up">
+  <h2 class="text-center">Art Gallery</h2>
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="expandedImg">
+  </div>
+  <script>
+
+    function expandImage(img) {
+      var modal = document.getElementById('imageModal');
+      var modalImg = document.getElementById('expandedImg');
+      modal.style.display = 'block';
+      modalImg.src = img.src;
+    }
+  
+
+    function closeModal() {
+      var modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+    }
+  
+
+    window.onclick = function(event) {
+      var modal = document.getElementById('imageModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+    </script>
+  <div class="imgcard-container">
+    <script>
+$(document).ready(function() {
+
+  function createImageCardsFromJSON(data) {
+    var imgCardContainer = $('.imgcard-container');
+    imgCardContainer.empty();
+
+    data.forEach(function(item) {
+      var imgCardHtml = `
+        <div class="img-card">
+          <img src="imgsub/${item.name}" alt="${item.name}"  onclick="expandImage(this)">
+          <div class="imgcard-footer text-muted text-center">- ${item.name.replace('.png', '')} -</div>
+        </div>
+      `;
+      imgCardContainer.append(imgCardHtml);
+    });
+  }
+
+
+  $.getJSON('imagedata.json', function(data) {
+    createImageCardsFromJSON(data);
+  });
+  
+});
+      </script>
   </div>
 </section>
-<section class="bg-success text-light" data-aos="fade-up">
+<!--<section class="bg-success text-light" data-aos="fade-up">
   <div class="container">
     <h2>Section 3</h2>
     <p>Phasellus hendrerit mauris non magna ultricies, sed laoreet ligula dignissim. Aliquam sit amet fermentum mauris.</p>
@@ -210,5 +260,73 @@ transition: opacity 0.3s ease;
     AOS.refresh();
   });
 </script>
+<style>
+    .imgcard-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+  }
+
+  .img-card {
+    flex-grow: 1;
+    max-width: 200px; 
+    margin: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    flex-direction: column; 
+  }
+
+  .img-card img {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 5px 5px 0 0;
+  }
+
+  .imgcard-footer {
+    background-color: #f9f9f9;
+    padding: 5px; 
+    text-align: center; 
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 5px 5px;
+  }
+  .modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.9); 
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  .close {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
 </body>
 </html>
