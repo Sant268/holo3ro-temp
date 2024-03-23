@@ -118,6 +118,7 @@ transition: opacity 0.3s ease;
               </div>
             `;
             cardsContainer.append(cardHtml);
+            AOS.refresh()
           });
         }
                 $.getJSON('resp.json', function(data) {
@@ -206,6 +207,7 @@ transition: opacity 0.3s ease;
     function closeModal() {
       var modal = document.getElementById('imageModal');
       modal.style.display = 'none';
+      AOS.refresh();
     }
   
 
@@ -318,12 +320,6 @@ $(document).ready(function() {
   // Initialize AOS
   AOS.init({
     duration: 1200
-  });
-  onElementHeightChange(document.body, function(){
-    AOS.refresh();
-  });
-  onElementHeightChange(document.section, function(){
-    AOS.refresh();
   });
 </script>
 <style>
