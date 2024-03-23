@@ -89,7 +89,7 @@ transition: opacity 0.3s ease;
 }
 
 </style>
-<section class="bg-light grad" data-aos="fade-up">
+<section class="bg-light grad aos-init aos-animate" data-aos="fade-up">
   <div class="container">
 
     <div class="d-flex flex-wrap">
@@ -174,16 +174,20 @@ transition: opacity 0.3s ease;
       .FMKOBO {
         background-color: rgb(176, 193, 240);
       }
-      #section2 {
+      /* #section2 {
         height: 100vh;
-      }
+      } */
+      .credits-section, .fanfic-section {
+  height: 50vh;
+  overflow: auto; /* Add this to enable scrolling within the sections */
+}
     </style>
 
     </div>
   </div>
 
 </section>
-<section id="section2" class="bg-dark text-light" data-aos="fade-up">
+<section id="section2" class="bg-dark text-light aos-init aos-animate" data-aos="fade-up">
   <h2 class="text-center">Art Gallery</h2>
   <div id="imageModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
@@ -241,14 +245,14 @@ $(document).ready(function() {
       </script>
   </div>
 </section>
-<section class="bg-secondary text-light aos-init aos-animate" data-aos="fade-up" style="height: 50vh;">
+<section class="bg-secondary text-light aos-init aos-animate fanfic-section" data-aos="fade-up">
   <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100%;">
     <h2 style="font-family: 'Arial', sans-serif; text-align: center;">Explore <span style="font-style: italic; font-family: 'Lucida Handwriting', cursive;">Fanfiction</span></h2>
     <button onclick="window.location.href='fanfict.html'" class="btn btn-lg btn-secondary" style="border: 2px solid whitesmoke;border-radius: 5px;padding: 10px 20px;margin: 10px;">Visit Fanfiction Section</button>
   </div>
 </section>
 
-<section class="bg-success text-light workimage" data-aos="fade-up" style="height: 50vh;">
+<section class="bg-success text-light workimage aos-init aos-animate credits-section" data-aos="fade-up">
   <style>
       
 
