@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 <!-- Primary Meta Tags -->
 <title>Happy 2nd anniversary holoh3ro! </title>
 <meta name="title" content="Happy 2nd anniversary holoh3ro! " />
@@ -63,7 +63,7 @@ This is a fan project and is not official in any way" />
 
 }
 
-.grad {
+.grad, .fanfic-section {
   background: linear-gradient(to bottom, #ffcccc, #add8e6, #808080);
 }
 
@@ -219,9 +219,16 @@ transition: opacity 0.3s ease;
       /* #section2 {
         height: 100vh;
       } */
-      .credits-section, .fanfic-section {
+      .fanfic-section {
+  height: 100vh;
+  overflow: hidden; 
+}
+
+.fanfic-section img {
   height: 50vh;
-  overflow: auto; 
+}
+.credits-section {
+  height: 50vh;
 }
     </style>
 
@@ -288,15 +295,78 @@ $(document).ready(function() {
       </script>
   </div>
 </section>
-<section class="bg-secondary text-light aos-init aos-animate fanfic-section" data-aos="fade-up">
+<section class="bg-secondary text-dark aos-init aos-animate fanfic-section" data-aos="fade-up">
   <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100%;">
     <h3 style="font-family: 'Arial', sans-serif; text-align: center;">Explore <span style="font-style: italic; font-family: 'Lucida Handwriting', cursive;">Fanfiction</span></h2>
-    <button onclick="window.location.href='fanfict.html'" class="btn btn-lg btn-secondary" style="border: 2px solid whitesmoke;border-radius: 5px;padding: 10px 20px;margin: 10px;">Visit Fanfiction Section</button>
+    <button onclick="window.location.href='fanfict.html'" class="button-56" style="padding: 10px 20px;margin: 10px;">Visit Fanfiction Section</button>
     
     <br />
     <h3 style="font-family: 'Arial', sans-serif; text-align: center;"> Check out the h3ro Fanbook! </h2>
-      <a href="https://drive.google.com/file/d/12gBJqBGvLkyo-ZZ9ffpqQ8sqdLS931sC/view?usp=sharing"><button class="btn btn-lg btn-secondary" style="border: 2px solid whitesmoke;border-radius: 5px;padding: 10px 20px;margin: 10px;">Drive Link 📔</button></a>
+      <img src="holoh3ro_anniv_front_cover.png" />
+      <a href="https://drive.google.com/file/d/12gBJqBGvLkyo-ZZ9ffpqQ8sqdLS931sC/view?usp=sharing"><button class="button-56" style="padding: 10px 20px;margin: 10px;">Drive Link 📔</button></a>
   </div>
+  <style>
+.fanfic-section a {
+  text-decoration: none;
+}
+.button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+  </style>
 </section>
 
 <section class="bg-success text-light workimage aos-init aos-animate credits-section" data-aos="fade-up">
